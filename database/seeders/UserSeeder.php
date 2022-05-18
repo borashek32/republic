@@ -19,14 +19,14 @@ class UserSeeder extends Seeder
   DB::table('users')->insert([
       [
         'name'      => 'Nataly Zueva',
-        'email'     => 'borashek@inbox.ru',
+        'email'     => 'admin@gmail.com',
         'password'  => Hash::make('11111111'),
         'phone'     => '11111111111',
         'email_verified_at' => '10.05.2022'
       ],
       [
         'name'      => 'Vadim Zuev',
-        'email'     => 'borashek88@gmail.com',
+        'email'     => 'user@gmail.com',
         'password'  => Hash::make('22222222'),
         'phone'     => '2222222222',
         'email_verified_at' => '10.06.2022'
