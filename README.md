@@ -1,6 +1,6 @@
 Чтобы развернуть приложение на локальном сервере:
 
-1. Клонировать репозиторий git clone https://github.com/borashek32/republic.git
+1. Клонировать репозиторий `git clone https://github.com/borashek32/republic.git`
 2. `composer install`
 3. `npm install`
 4. `npm run watch`
