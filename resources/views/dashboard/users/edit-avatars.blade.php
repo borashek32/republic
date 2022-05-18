@@ -20,13 +20,6 @@
                         <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
                             <x-jet-label for="photo" value="{{ __('Photo') }}" />
 
-                            <!-- New Profile Photo Preview -->
-                            <div class="mt-2" x-show="photoPreview" style="display: none;">
-                                <span class="block rounded-full w-20 h-20 bg-cover bg-no-repeat bg-center"
-                                        x-bind:style="'background-image: url(\'' + photoPreview + '\');'">
-                                </span>
-                            </div>
-
                             <!-- Profile Photo File Input -->
                             <div class="mt-10">
                                 <input type="file" name="photo" placeholder="Choose photo" id="photo">

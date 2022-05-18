@@ -55,28 +55,6 @@
                         @enderror
                     </div>
 
-                    <div class="mb-4">
-                        <div>
-                          <div class="">
-                            <input
-                                name="visability"
-                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm
-                                bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition
-                                duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                                type="checkbox"
-                                value="{{ 'checked' ? '1' : '0' }}"
-                                id="flexCheckDefault"
-                                >
-                            <label class="" for="flexCheckDefault">
-                                <p class="block text-gray-700 text-sm font-bold mb-2">
-                                    Check, if post is visible for all users (authenticated or not).
-                                    Otherwise it will be shown only for logged in users
-                                </p>
-                            </label>
-                          </div>
-                        </div>
-                    </div>
-
                     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                         <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
                             <input type="submit" value="Save" class="inline-flex justify-center w-full
