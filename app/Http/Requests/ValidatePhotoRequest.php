@@ -25,6 +25,6 @@ class ValidatePhotoRequest extends FormRequest
     {
         return [
             'photo' => 'mimes:jpeg,jpg,png|max:1024',
-        ];
+        ]; 
     }
 }

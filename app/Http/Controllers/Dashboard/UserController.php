@@ -22,7 +22,7 @@ class UserController extends Controller
         }
 
         return view('dashboard.users.index', compact('users'));
-    }
+    } 
 
     public function update(Request $request, User $user)
     {

@@ -17,7 +17,7 @@ Route::get('/', [App\Http\Controllers\Site\PostController::class, 'index']);
 Route::get('/{id}', [App\Http\Controllers\Site\PostController::class, 'onePost'])
     ->name('onePost');
 
-Route::middleware([
+Route::middleware([ 
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
