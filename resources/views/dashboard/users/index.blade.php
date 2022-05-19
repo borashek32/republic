@@ -16,18 +16,18 @@
                 <table class="table-fixed w-full">
                 <thead>
                 <tr class="bg-gray-100">
-                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">№</th>
+                    {{-- <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">№</th> --}}
                     <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Date</th>
                     <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Name</th>
                     <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Email</th>
                     <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Photo</th>
-                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Actions</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Update photo</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($users as $user)
                     <tr class="trix-content">
-                        <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $loop->iteration }}</td>
+                        {{-- <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $loop->iteration }}</td> --}}
                         <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ Date::parse($user->created_at)->format('j F Y') }}</td>
                         <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $user->name }}</td>
                         <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $user->email }}</td>
@@ -37,21 +37,15 @@
                                 width="100px"
                                 class="rounded-md"
                                 >
-                        </td>
-
-                        <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
-                            <button class="mb-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                <a href="{{ route('users.edit', $user->id) }}">
-                                    Edit avatar
-                                </a>
-                            </button>
-                        </td>
+                        </td>        
+                        
+                        @include('dashboard.users.edit-avatars')
                     </tr>
                 @endforeach
                 </tbody>
             </table>
             @else
-                <p>There is no post here:(</p>
+                <p>There is no user here:(</p>
             @endif
         </div>
     </div>

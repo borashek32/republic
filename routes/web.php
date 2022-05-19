@@ -27,5 +27,6 @@ Route::middleware([
     Route::post('/posts/post_visability', [App\Http\Controllers\Dashboard\PostController::class, 'updateVisability'])
         ->name('posts.visability');
     Route::resource('/users', App\Http\Controllers\Dashboard\UserController::class)
-        ->names('users');
+        ->names('users')
+        ->only(['index', 'update']);
 });

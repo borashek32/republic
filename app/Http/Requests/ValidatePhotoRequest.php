@@ -24,7 +24,7 @@ class ValidatePhotoRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'mimes:jpeg,jpg,png|max:2048',
+            'photo' => 'mimes:jpeg,jpg,png|max:1024',
         ];
     }
 }

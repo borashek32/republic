@@ -25,7 +25,7 @@ class ValidatePostFormRequest extends FormRequest
     {
         return [
             'title'       => 'required|max:100|min:3',
-            'description' => 'required|min:10'
+            'description' => 'required|max:1000|min:10'
         ];
     }
 }

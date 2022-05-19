@@ -22,6 +22,13 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function scopeAllUsersPosts($query)
+    {
+        $posts = $query->where('user_id', Auth::user()->id);
+
+        return $posts;
+    }
+
     public function scopeUserPosts($query)
     {
         $posts = $query->where('user_id', Auth::user()->id);
