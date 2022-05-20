@@ -66,7 +66,7 @@ class PostController extends Controller
 
         } else {
             return redirect('/dashboard/posts')
-            ->with('error', 'Something went wrong');
+                ->with('error', 'Something went wrong');
         }
     }
 
