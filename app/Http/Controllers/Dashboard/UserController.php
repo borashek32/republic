@@ -24,10 +24,11 @@ class UserController extends Controller
         return view('dashboard.users.index', compact('users'));
     } 
 
-    public function update(Request $request, User $user)
+    public function update(ValidatePhotoRequest $request, User $user)
     {
         if (Auth::user()->hasRole('admin')) {
-            $path = $request->file('photo')->store('profile-photos', [
+            $photo = $request->file('photo');
+            $path = $photo->store('profile-photos', [
                 'disk' => 'public'
             ]);
             $user->profile_photo_path = $path;

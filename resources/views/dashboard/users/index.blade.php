@@ -38,8 +38,16 @@
                                 class="rounded-md"
                                 >
                         </td>        
-                        
-                        @include('dashboard.users.edit-avatars')
+                        <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
+                            <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+
+                                <x-jet-input type="file" placeholder="Photo" name="photo" />
+
+                                <x-jet-secondary-button class="mt-2" type="submit">Update</x-jet-secondary-button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

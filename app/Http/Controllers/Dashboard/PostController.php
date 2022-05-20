@@ -30,7 +30,13 @@ class PostController extends Controller
                 ->with('error', 'You do not have permissions');
         }
 
-        return view('dashboard.posts.index', compact('posts'));
+        if($posts) {
+            return view('dashboard.posts.index', compact('posts'));
+        
+        } else {
+            return redirect('/dashboard/posts')
+                ->with('error', 'Something went wrong');
+        }
     }
 
     /**
@@ -82,11 +88,11 @@ class PostController extends Controller
             if ($post) {
                 return view('dashboard.posts.show', compact('post'));
             } else {
-                return redirect('/dashboard/posts')
+                return back()
                     ->with('error', 'Post not found');
             }
         } else {
-            return redirect('/dashboard/posts')
+            return back()
                 ->with('error', 'You do not have necessary permissions');
         }
     }
