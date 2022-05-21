@@ -1,4 +1,5 @@
 @extends('layouts.site')
+@section('title')Blog | Posts | {{ $post->title }} @endsection
 @section('content')
 <div class="mt-8 bg-white overflow-hidden shadow sm:rounded-lg">
     <div class="">
