@@ -27,61 +27,63 @@
                     </div>
                 </div>
             @endif
-            @if($posts)
-                <table class="table-fixed w-full">
-                <thead>
-                <tr class="bg-gray-100">
-                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">№</th>
-                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Date</th>
-                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Title</th>
-                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Description</th>
-                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Public post</th>
-                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($posts as $post)
-                    <tr class="trix-content">
-                        <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $loop->iteration }}</td>
-                        <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ Date::parse($post->created_at)->format('j F Y') }}</td>
-                        <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
-                            <a href="{{ route('posts.show', $post->id) }}" class="underline">{{ $post->title }}</a>
-                        </td>
-                        <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ substr($post->description, 0, 100) }}...</td>
-                        <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
-                            <input
-                                name="visability"
-                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                                type="checkbox"
-                                data-toggle="toggle"
-                                id="flexCheckDefault"
-                                value="{{ $post->id }}"
-                                {{ $post->visability == '1' ? 'checked' : '' }}
-                                >
-                        </td>
-                        <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
-
-                            @if (Auth::user()->hasRole('user'))
-                                <button class="mb-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                    <a href="{{ route('posts.edit', $post->id) }}">
-                                        Edit
-                                    </a>
-                                </button>
-                            @endif
-
-                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <input type="submit" value="Delete" class="bg-red-500 hover:bg-red-700
-                                    text-white font-bold py-2 px-4 rounded cursor-pointer">
-                            </form>
-                        </td>
+            @if(Auth::user()->hasRole('user') || Auth::user()->hasRole('admin'))
+                @if($posts)
+                    <table class="table-fixed w-full">
+                    <thead>
+                    <tr class="bg-gray-100">
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">№</th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Date</th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Title</th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Description</th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Public post</th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Actions</th>
                     </tr>
-                @endforeach
-                </tbody>
-            </table>
-            @else
-                <p>There is no post here:(</p>
+                    </thead>
+                    <tbody>
+                    @foreach($posts as $post)
+                        <tr class="trix-content">
+                            <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $loop->iteration }}</td>
+                            <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ Date::parse($post->created_at)->format('j F Y') }}</td>
+                            <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
+                                <a href="{{ route('posts.show', $post->id) }}" class="underline">{{ $post->title }}</a>
+                            </td>
+                            <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ substr($post->description, 0, 100) }}...</td>
+                            <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
+                                <input
+                                    name="visability"
+                                    class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                    type="checkbox"
+                                    data-toggle="toggle"
+                                    id="flexCheckDefault"
+                                    value="{{ $post->id }}"
+                                    {{ $post->visability == '1' ? 'checked' : '' }}
+                                    >
+                            </td>
+                            <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
+
+                                @if (Auth::user()->hasRole('user'))
+                                    <button class="mb-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                        <a href="{{ route('posts.edit', $post->id) }}">
+                                            Edit
+                                        </a>
+                                    </button>
+                                @endif
+
+                                <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" value="Delete" class="bg-red-500 hover:bg-red-700
+                                        text-white font-bold py-2 px-4 rounded cursor-pointer">
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+                @else
+                    <p>There is no post here:(</p>
+                @endif
             @endif
         </div>
     </div>
