@@ -8,6 +8,9 @@ class_name: AcceptanceTester
 actor: AcceptanceTester
 modules:
   enabled:
+    # - Laravel
+    # - WebDriver
+
     - PhpBrowser
     # - Db
     - \Helper\Acceptance
@@ -19,4 +22,12 @@ modules:
     #   user: 'root'
     #   password: 'root'   
     #   unix_socket: '/Applications/MAMP/tmp/mysql/mysql.sock'
+
+    # WebDriver:
+    #   browser: chrome
+    #   url: http://127.0.0.1:8000/
+    #   port: 4444
+    # Laravel:
+    #   part: ORM
+    #   environment_file: .env
 step_decorators: ~
