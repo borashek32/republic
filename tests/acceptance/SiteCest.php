@@ -52,16 +52,4 @@ class SiteCest
         $I->see('Manage all posts');
         $I->see('Users');
     }
-
-    public function userCanRegister(AcceptanceTester $I)
-    {
-        $I->amOnPage('/register');
-        $I->submitForm('#register-form', array('user' => array(
-            'name'                    => 'Miles',
-            'email'                   => 'gmail@gmail.com',
-            'password'                => new PasswordArgument('thisissecret'),
-            'password_confirmation'   => new PasswordArgument('thisissecret')
-       )), 'submit-button');
-       $I->see('Manage your posts');
-    }
 }

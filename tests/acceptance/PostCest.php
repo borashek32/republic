@@ -15,9 +15,9 @@ class PostCest
         $I->see('Manage your posts');
     }
 
-    // tests
     public function userCanSeeCreatePostForm(AcceptanceTester $I)
     {
-        //
+        $I->amOnPage('/dashboard/posts/create');
+        $I->see('Add a new post');
     }
 }
