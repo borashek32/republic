@@ -8,11 +8,15 @@ class_name: AcceptanceTester
 actor: AcceptanceTester
 modules:
   enabled:
-    - PhpBrowser:
-        url: http://127.0.0.1:8000/
-    - Db:
-        dsn: 'mysql:host=${DB_HOST};dbname=${DB_DATABASE}'
-        user: '${DB_USER}'
-        password: '${DB_PASSWORD}' 
+    - PhpBrowser
+    # - Db
     - \Helper\Acceptance
+  config: 
+    PhpBrowser:
+      url: http://127.0.0.1:8000/
+    # Db:
+    #   dsn: 'mysql:host=localhost;dbname=republic'
+    #   user: 'root'
+    #   password: 'root'   
+    #   unix_socket: '/Applications/MAMP/tmp/mysql/mysql.sock'
 step_decorators: ~
