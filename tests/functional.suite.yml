@@ -10,4 +10,11 @@ modules:
   enabled:
     # add a framework module here
     - \Helper\Functional
+    # - Db
+  # config:
+  #   Db:
+  #     dsn: 'mysql:host=localhost;dbname=republic'
+  #     user: 'root'
+  #     password: 'root'   
+  #     unix_socket: '/Applications/MAMP/tmp/mysql/mysql.sock'  
   step_decorators: ~

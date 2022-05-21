@@ -12,16 +12,18 @@ modules:
     # - WebDriver
 
     - PhpBrowser
-    # - Db
+    - Db
     - \Helper\Acceptance
   config: 
     PhpBrowser:
-      url: http://127.0.0.1:8000/
-    # Db:
-    #   dsn: 'mysql:host=localhost;dbname=republic'
-    #   user: 'root'
-    #   password: 'root'   
-    #   unix_socket: '/Applications/MAMP/tmp/mysql/mysql.sock'
+      url: '%APP_URL%'
+    Db:
+      dsn: 'mysql:host=DB_HOST;dbname=DB_DATABASE;charset=utf8mb4'
+      user: 'root'
+      password: 'root'   
+      # unix_socket: '/Applications/MAMP/tmp/mysql/mysql.sock'
+      populate: false
+      cleanup: false
 
     # WebDriver:
     #   browser: chrome
