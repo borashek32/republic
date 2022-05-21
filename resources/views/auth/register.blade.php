@@ -6,7 +6,7 @@
 
         <x-jet-validation-errors class="mb-4" />
 
-        <form id="register-form" method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register') }}">
             @csrf
 
             <div>
@@ -51,7 +51,7 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-jet-button name="submit-button" class="ml-4">
+                <x-jet-button class="ml-4">
                     {{ __('Register') }}
                 </x-jet-button>
             </div>

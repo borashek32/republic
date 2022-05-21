@@ -11,14 +11,6 @@ class SiteCest
         $I->see('Posts List');
     }
 
-    // public function onePostPageWorks(AcceptanceTester $I)
-    // {
-    //     $post_id = random_int(1, 30);
-    //     $post    = Post::where('id', $post_id);
-    //     $I->amOnPage('posts/' . $post_id);
-    //     $I->see($post->title);
-    // }
-
     public function loginPageWorks(AcceptanceTester $I)
     {
         $I->amOnPage('/login');
