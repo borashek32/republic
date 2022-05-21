@@ -30,8 +30,7 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => Hash::make('11111111'),
-            'remember_token' => Str::random(10),
-            'profile_photo_path' => 'profile-photos/fprZDRJidfgYAemAM6zUp5CmutrtJllllFnHRgjd.png'
+            'remember_token' => Str::random(10)
         ];
     }
 

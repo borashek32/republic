@@ -41,11 +41,15 @@
                         <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $user->name }}</td>
                         <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $user->email }}</td>
                         <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
-                            <img src="{{ asset('storage/' . $user->profile_photo_path) }}"
-                                alt="Profile photo"
-                                width="100px"
-                                class="rounded-md"
-                                >
+                            @if(Auth::user()->profile_photo_path)
+                                <img src="{{ asset('storage/' . $user->profile_photo_path) }}"
+                                    alt="Profile photo"
+                                    width="100px"
+                                    class="rounded-md"
+                                    >
+                            @else
+                                <img src="{{ asset('img/small-b.png') }}" width="50px" classs="h-10 w-10 rounded-full object-cover" alt="profile photo">
+                            @endif    
                         </td>        
                         <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
                             <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">

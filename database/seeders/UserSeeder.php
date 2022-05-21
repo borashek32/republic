@@ -22,14 +22,12 @@ class UserSeeder extends Seeder
         'email'     => 'admin@gmail.com',
         'password'  => Hash::make('11111111'),
         'email_verified_at' => '10.05.2022',
-        'profile_photo_path' => 'profile-photos/fprZDRJidfgYAemAM6zUp5CmutrtJllllFnHRgjd.png'
       ],
       [
         'name'      => 'Vadim Zuev',
         'email'     => 'user@gmail.com',
         'password'  => Hash::make('22222222'),
         'email_verified_at' => '10.06.2022',
-        'profile_photo_path' => 'profile-photos/fprZDRJidfgYAemAM6zUp5CmutrtJllllFnHRgjd.png'
       ]
     ]);
   }
