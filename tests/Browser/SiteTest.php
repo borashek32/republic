@@ -47,4 +47,14 @@ class ExampleTest extends DuskTestCase
                 ->assertSee('Remember me');
         });
     }
+
+    public function testRegisterPage()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/register')
+                ->pause(1000)
+                ->assertDontSee('123')
+                ->assertSee('Confirm Password');
+        });
+    }
 }
