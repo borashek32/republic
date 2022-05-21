@@ -1,35 +1,16 @@
-# Codeception Test Suite Configuration
-#
-# Suite for acceptance tests.
-# Perform tests in browser using the WebDriver or PhpBrowser.
-# If you need both WebDriver and PHPBrowser tests - create a separate suite.
-
 class_name: AcceptanceTester
 actor: AcceptanceTester
 modules:
   enabled:
-    # - Laravel
-    # - WebDriver
-
     - PhpBrowser
     - Db
     - \Helper\Acceptance
   config: 
     PhpBrowser:
-      url: '%APP_URL%'
+      url: http://127.0.0.1:8000/
     Db:
-      dsn: 'mysql:host=DB_HOST;dbname=DB_DATABASE;charset=utf8mb4'
+      dsn: 'mysql:host=127.0.0.1:8889;dbname=republic'
       user: 'root'
       password: 'root'   
-      # unix_socket: '/Applications/MAMP/tmp/mysql/mysql.sock'
-      populate: false
-      cleanup: false
-
-    # WebDriver:
-    #   browser: chrome
-    #   url: http://127.0.0.1:8000/
-    #   port: 4444
-    # Laravel:
-    #   part: ORM
-    #   environment_file: .env
+      unix_socket: '/Applications/MAMP/tmp/mysql/mysql.sock'
 step_decorators: ~
