@@ -3,6 +3,8 @@
 namespace Acceptance;
 
 use \AcceptanceTester;
+use App\Models\User;
+use App\Models\Post;
 
 class PostCest
 {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b8b8bc680c127df0f03774432b7cb9c4",
+    "content-hash": "d9ef6b919bc99fc2bb0dee2d7457649f",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -6237,66 +6237,6 @@
             "time": "2022-03-05T19:26:44+00:00"
         },
         {
-            "name": "codeception/module-laravel",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Codeception/module-laravel.git",
-                "reference": "55d0d106685cfd63cfea57e368e796b1981fdfb4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-laravel/zipball/55d0d106685cfd63cfea57e368e796b1981fdfb4",
-                "reference": "55d0d106685cfd63cfea57e368e796b1981fdfb4",
-                "shasum": ""
-            },
-            "require": {
-                "codeception/codeception": "^5.0.0-RC2",
-                "codeception/lib-innerbrowser": "^3.1",
-                "ext-json": "*",
-                "php": "^8.0"
-            },
-            "require-dev": {
-                "codeception/module-asserts": "^3.0",
-                "codeception/module-rest": "^3.1",
-                "laravel/framework": "^8.0",
-                "vlucas/phpdotenv": "^5.3"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jan-Henk Gerritsen"
-                },
-                {
-                    "name": "Michael Bodnarchuk"
-                },
-                {
-                    "name": "Gustavo Nieves",
-                    "homepage": "https://medium.com/@ganieves"
-                }
-            ],
-            "description": "Codeception module for Laravel framework",
-            "homepage": "https://codeception.com/",
-            "keywords": [
-                "codeception",
-                "laravel"
-            ],
-            "support": {
-                "issues": "https://github.com/Codeception/module-laravel/issues",
-                "source": "https://github.com/Codeception/module-laravel/tree/3.0.0"
-            },
-            "time": "2022-04-20T10:09:13+00:00"
-        },
-        {
             "name": "codeception/module-phpbrowser",
             "version": "3.0.0",
             "source": {
@@ -6360,66 +6300,6 @@
                 "source": "https://github.com/Codeception/module-phpbrowser/tree/3.0.0"
             },
             "time": "2022-02-19T18:22:27+00:00"
-        },
-        {
-            "name": "codeception/module-webdriver",
-            "version": "3.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Codeception/module-webdriver.git",
-                "reference": "54cbd32d2312f7d050d9482f71a00bfef3c8fcde"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-webdriver/zipball/54cbd32d2312f7d050d9482f71a00bfef3c8fcde",
-                "reference": "54cbd32d2312f7d050d9482f71a00bfef3c8fcde",
-                "shasum": ""
-            },
-            "require": {
-                "codeception/codeception": "^5.0.0-RC2",
-                "codeception/lib-web": "^1.0.1",
-                "codeception/stub": "^4.0",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "php": "^8.0",
-                "php-webdriver/webdriver": "^1.8.0"
-            },
-            "suggest": {
-                "codeception/phpbuiltinserver": "Start and stop PHP built-in web server for your tests"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Bodnarchuk"
-                },
-                {
-                    "name": "Gintautas Miselis"
-                },
-                {
-                    "name": "Zaahid Bateson"
-                }
-            ],
-            "description": "WebDriver module for Codeception",
-            "homepage": "https://codeception.com/",
-            "keywords": [
-                "acceptance-testing",
-                "browser-testing",
-                "codeception"
-            ],
-            "support": {
-                "issues": "https://github.com/Codeception/module-webdriver/issues",
-                "source": "https://github.com/Codeception/module-webdriver/tree/3.1.1"
-            },
-            "time": "2022-04-09T08:22:33+00:00"
         },
         {
             "name": "codeception/stub",
@@ -6770,6 +6650,79 @@
                 "source": "https://github.com/hamcrest/hamcrest-php/tree/v2.0.1"
             },
             "time": "2020-07-09T08:09:16+00:00"
+        },
+        {
+            "name": "laravel/dusk",
+            "version": "v6.24.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/dusk.git",
+                "reference": "7fed3695741787d9998c5f04c94adfd62d70e766"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/dusk/zipball/7fed3695741787d9998c5f04c94adfd62d70e766",
+                "reference": "7fed3695741787d9998c5f04c94adfd62d70e766",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-zip": "*",
+                "illuminate/console": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
+                "nesbot/carbon": "^2.0",
+                "php": "^7.2|^8.0",
+                "php-webdriver/webdriver": "^1.9.0",
+                "symfony/console": "^4.3|^5.0|^6.0",
+                "symfony/finder": "^4.3|^5.0|^6.0",
+                "symfony/process": "^4.3|^5.0|^6.0",
+                "vlucas/phpdotenv": "^3.0|^4.0|^5.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^4.16|^5.17.1|^6.12.1|^7.0",
+                "phpunit/phpunit": "^7.5.15|^8.4|^9.0"
+            },
+            "suggest": {
+                "ext-pcntl": "Used to gracefully terminate Dusk when tests are running."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Dusk\\DuskServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Dusk\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel Dusk provides simple end-to-end testing and browser automation.",
+            "keywords": [
+                "laravel",
+                "testing",
+                "webdriver"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/dusk/issues",
+                "source": "https://github.com/laravel/dusk/tree/v6.24.0"
+            },
+            "time": "2022-05-09T13:43:52+00:00"
         },
         {
             "name": "laravel/sail",

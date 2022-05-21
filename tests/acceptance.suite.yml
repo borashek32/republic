@@ -10,6 +10,7 @@ modules:
       url: http://127.0.0.1:8000/
     Db:
       dsn: 'mysql:host=127.0.0.1:8889;dbname=republic'
+      database: 'republic'
       user: 'root'
       password: 'root'   
       unix_socket: '/Applications/MAMP/tmp/mysql/mysql.sock'
