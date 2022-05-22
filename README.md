@@ -18,4 +18,4 @@
 tests/acceptance.suit.yml, в нем настройки для MAMP pro на MacOs. Не получилось написать так, чтобы настройки брались из .env. Codeception использует .env, потому что в процессе тестов генерирует фэйковые данные, которые не сохраняются в бд
 Запустить тесты `codecept run`
 
-Для запуска и визуализации процесса dusk тестов необходим Chrome последней версии. Инструкция по dusk тесты можно здесь `https://laravel.com/docs/9.x/dusk#available-assertions`
+Для запуска и визуализации процесса dusk тестов необходим Chrome последней версии. Инструкция по dusk тестам `https://laravel.com/docs/9.x/dusk#available-assertions`

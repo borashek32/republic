@@ -7,29 +7,29 @@ use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 use App\Models\Post;
 
-class ExampleTest extends DuskTestCase
+class SiteTest extends DuskTestCase
 {
-    public function testMainPage()
+    public function testUnloggedUserCanSeeOnlyPublicPosts()
     {
         $this->post = Post::where('visability', 1)->first();
         
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                ->pause(1000)
                 ->assertDontSee('123')
                 ->assertSee($this->post->title)
                 ->assertDontSee('logged users')
-                ->assertSee('Posts List');
+                ->assertSee('Posts List')
+                ->assertDontSee('logged users')
+                ->assertSee('*Public post');
         });
     }
 
-    public function testOnePostPage()
+    public function testUnloggedUserCanSeeOnePublicPost()
     {
         $this->post = Post::where('visability', 1)->first();
 
         $this->browse(function (Browser $browser) {
             $browser->visit('/' . $this->post->id)
-                ->pause(1000)
                 ->assertDontSee('123')
                 ->assertSee($this->post->title)
                 ->assertSee('*Public post')
@@ -42,7 +42,6 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
-                ->pause(1000)
                 ->assertDontSee('123')
                 ->assertSee('Remember me');
         });
@@ -52,7 +51,6 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/register')
-                ->pause(1000)
                 ->assertDontSee('123')
                 ->assertSee('Confirm Password');
         });

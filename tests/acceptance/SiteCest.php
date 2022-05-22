@@ -5,25 +5,10 @@ use \Codeception\Step\Argument\PasswordArgument;
 
 class SiteCest
 {
-    public function frontPageWorks(AcceptanceTester $I)
+    public function mainPageWorks(AcceptanceTester $I)
     {
         $I->amOnPage('/');
         $I->see('Posts List');
-    }
-
-    public function loginPageWorks(AcceptanceTester $I)
-    {
-        $I->amOnPage('/login');
-        $I->see('Email');
-        $I->see('Password');
-    }
-
-    public function registerPageWorks(AcceptanceTester $I)
-    {
-        $I->amOnPage('/register');
-        $I->see('Email');
-        $I->see('Password');
-        $I->see('Confirm Password');
     }
 
     public function userCanLogin(AcceptanceTester $I)
