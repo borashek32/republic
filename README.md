@@ -16,6 +16,5 @@
 11. По тестам. 
 Если тесты codecept падают, то нужно проверить настройки в файле настроек
 tests/acceptance.suit.yml, в нем настройки для MAMP pro на MacOs. Не получилось написать так, чтобы настройки брались из .env. Codeception использует .env, потому что в процессе тестов генерирует фэйковые данные, которые не сохраняются в бд
-Запустить тесты `codecept run`
-
-Для запуска и визуализации процесса dusk тестов необходим Chrome последней версии. Инструкция по dusk тестам `https://laravel.com/docs/9.x/dusk#available-assertions`
+Запустить тесты `codecept run`.
+Для запуска  dusk тестов необходим Chrome последней версии. Инструкция по dusk тестам `https://laravel.com/docs/9.x/dusk#available-assertions`. Команда `php artisan dusk`
