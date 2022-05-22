@@ -41,7 +41,7 @@
                         <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $user->name }}</td>
                         <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $user->email }}</td>
                         <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
-                            @if(Auth::user()->profile_photo_path)
+                            @if($user->profile_photo_path)
                                 <img src="{{ asset('storage/' . $user->profile_photo_path) }}"
                                     alt="Profile photo"
                                     width="100px"
