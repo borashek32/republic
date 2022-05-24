@@ -32,4 +32,9 @@
         </div>
     </div>
 @endforeach
+<div class="bg-grey-100 mt-4 px-4 py-3 flex items-center justify-center border-t border-grey-200 sm:px-6">
+    <div class="flex-1 mt-2 text-md flex justify-between sm:hidden bd-grey-100">
+      {{ $posts->links() }}
+    </div>
+</div>
 @endsection

@@ -13,10 +13,11 @@ class PostController extends Controller
     public function index()
     {
         if (Auth::user()) {
-            $posts = Post::all();
+            $posts = Post::paginate(6);
 
         } else {
-            $posts = Post::where('visability', '1')->get();
+            $posts = Post::where('visability', '1')
+                ->paginate(6);
         }
 
         return view('welcome', compact('posts'));

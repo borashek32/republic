@@ -20,10 +20,11 @@ class PostController extends Controller
     public function index()
     {
         if (Auth::user()->hasRole('user')) {
-            $posts = Post::userPosts()->get();
+            $posts = Post::userPosts()
+                ->paginate(6);
 
         } elseif (Auth::user()->hasRole('admin')) {
-            $posts = Post::all();
+            $posts = Post::paginate(6);
 
         } else {
             return redirect('/')
