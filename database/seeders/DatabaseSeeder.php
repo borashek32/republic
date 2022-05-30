@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ModelHasRolesSeeder::class);
 
         \App\Models\User::factory(10)->create();
+        \App\Models\Tree::factory(10)->create();
+        \App\Models\Grass::factory(10)->create();
+        \App\Models\Flower::factory(10)->create();
         \App\Models\Post::factory(30)->create();
     }
 }

@@ -35,6 +35,8 @@
                                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">№</th>
                                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Date</th>
                                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Title</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Category</th>
+                                <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Subcategory</th>
                                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Description</th>
                                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Public post</th>
                                 <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Actions</th>
@@ -48,6 +50,8 @@
                                 <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
                                     <a href="{{ route('posts.show', $post->id) }}" class="underline">{{ $post->title }}</a>
                                 </td>
+                                <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ str_replace("App\\Models\\", "", $post->postable_type) }}</td>
+                                <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $post->postable->name }}</td>
                                 <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ substr($post->description, 0, 100) }}...</td>
                                 <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
                                     <input

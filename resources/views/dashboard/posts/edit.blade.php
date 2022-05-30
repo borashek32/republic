@@ -25,6 +25,39 @@
                 <form action="{{ route('posts.update', $post->id) }}" method="POST">
                     @method('PUT')
                     @csrf
+
+                    <div class="mb-4">
+                        <div class="form-control w-full max-w-xs">
+                            <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">
+                                Category
+                            </label>
+
+                            <select name="postable_type" class="select select-bordered">
+                                @foreach($category_array as $category)
+                                    <option value="{{ $category }}" @if ($category == $post->postable_type) selected @endif>
+                                        {{ str_replace("App\\Models\\", "", $category) }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <div class="form-control w-full max-w-xs">
+                            <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">
+                                Subcategory
+                            </label>
+
+                            <select name="postable_id" class="select select-bordered">
+                                <option disabled selected>{{ $post->postable->name }}</option>
+                                
+                                @foreach($subcategory_array as $subcategory)
+                                    <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="mb-4">
                         <label for="exampleFormControlInput1" class="block text-gray-700 text-sm font-bold mb-2">
                             Title:

@@ -22,4 +22,10 @@ class PostCest
         $I->amOnPage('/dashboard/posts/create');
         $I->see('Add a new post');
     }
+
+    public function userCanSeeCategoryModel()
+    {
+        $I->amOnPage('/dashboard/posts/create');
+        $I->see('Grass');
+    }
 }

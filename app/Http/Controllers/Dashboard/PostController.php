@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Tree;
+use App\Models\Grass;
+use App\Models\Flower;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -20,8 +23,7 @@ class PostController extends Controller
     public function index()
     {
         if (Auth::user()->hasRole('user')) {
-            $posts = Post::userPosts()
-                ->paginate(6);
+            $posts = Post::userPosts()->paginate(6);
 
         } elseif (Auth::user()->hasRole('admin')) {
             $posts = Post::paginate(6);
@@ -47,8 +49,18 @@ class PostController extends Controller
      */
     public function create()
     {
+        $category_array    = ['App\Models\Tree', 'App\Models\Grass', 'App\Models\Flower'];
+
+        $trees   = DB::table('trees');
+        $flowers = DB::table('flowers');
+ 
+        $subcategory_array = DB::table('grasses')
+                    ->union($trees)
+                    ->union($flowers)
+                    ->get();
+        
         if (Auth::user()->hasRole('user')) {
-            return view('dashboard.posts.create');
+            return view('dashboard.posts.create', compact('category_array', 'subcategory_array'));
         }
     }
 
@@ -64,6 +76,8 @@ class PostController extends Controller
             'title'         => $request->title,
             'description'   => $request->description,
             'visability'    => $request->visability,
+            'postable_id'   => $request->postable_id,
+            'postable_type' => $request->postable_type,
             'user_id'       => Auth::user()->id
         ]);
 
@@ -107,7 +121,17 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         if (Auth::user()->id == $post->user_id) {
-            return view('dashboard.posts.edit', compact('post'));
+            $category_array    = ['App\Models\Tree', 'App\Models\Grass', 'App\Models\Flower'];
+
+            $trees   = DB::table('trees');
+            $flowers = DB::table('flowers');
+    
+            $subcategory_array = DB::table('grasses')
+                        ->union($trees)
+                        ->union($flowers)
+                        ->get();
+
+            return view('dashboard.posts.edit', compact('post', 'category_array', 'subcategory_array'));
         } else {
             return redirect('/dashboard/posts')
             ->with('error', 'You do not have necessary permissions');
@@ -128,6 +152,8 @@ class PostController extends Controller
                 $post->title         =  $request->title;
                 $post->description   =  $request->description;
                 $post->visability    =  $request->visability;
+                $post->postable_id   =  $request->postable_id;
+                $post->postable_type =  $request->postable_type;
                 $post->save();
 
                 if ($post) {
