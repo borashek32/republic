@@ -20,13 +20,9 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'        => $this->faker->randomElement(User::pluck('id')->toArray()),
-            'postable_type'  => $this->faker->randomElement([
-                'App\Models\Tree',
-                'App\Models\Grass',
-                'App\Models\Flower'
-            ]),
-            'postable_id'    => random_int(1, 10),
+            'user_id'        => random_int(2, 12),
+            'postable_type'  => 'App\\Models\\User',
+//            'postable_id'    => $this->user_id,
             'title'          => $this->faker->words(2, true),
             'description'    => $this->faker->words(100, true),
             'visability'     => $this->faker->randomElement(['1', '0'])

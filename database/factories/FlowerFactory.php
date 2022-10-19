@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Flower;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +18,8 @@ class FlowerFactory extends Factory
     public function definition()
     {
         return [
-            'name'  => $this->faker->words(2, true)
+            'user_id'        => $this->faker->randomElement(User::pluck('id')->toArray()),
+            'name'           => $this->faker->words(2, true)
         ];
     }
 }

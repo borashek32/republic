@@ -3,15 +3,12 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Post;
-use App\Models\User;
-use App\Models\Tree;
-use App\Models\Grass;
-use App\Models\Flower;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ValidatePostFormRequest;
+use App\Http\Requests\ValidateCategoryUpdateRequest;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -34,7 +31,16 @@ class PostController extends Controller
         }
 
         if($posts) {
-            return view('dashboard.posts.index', compact('posts'));
+//            $categories    = ['App\Models\Tree', 'App\Models\Grass', 'App\Models\Flower'];
+            $categories    = array_keys(config('model-types.types'));
+
+            $trees         = DB::table('trees');
+            $flowers       = DB::table('flowers');
+            $subcategories = DB::table('grasses')
+                ->union($trees)
+                ->union($flowers)
+                ->get();
+            return view('dashboard.posts.index', compact('posts', 'categories', 'subcategories'));
         
         } else {
             return redirect('/dashboard/posts')
@@ -53,7 +59,6 @@ class PostController extends Controller
 
         $trees   = DB::table('trees');
         $flowers = DB::table('flowers');
- 
         $subcategory_array = DB::table('grasses')
                     ->union($trees)
                     ->union($flowers)
@@ -99,7 +104,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        if (Auth::user()->id == $post->user_id) {
+        if (Auth::user()->can('view', $post)) {
             if ($post) {
                 return view('dashboard.posts.show', compact('post'));
             } else {
@@ -120,22 +125,21 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        if (Auth::user()->id == $post->user_id) {
+        if (Auth::user()->can('view', $post)) {
             $category_array    = ['App\Models\Tree', 'App\Models\Grass', 'App\Models\Flower'];
 
             $trees   = DB::table('trees');
             $flowers = DB::table('flowers');
-    
             $subcategory_array = DB::table('grasses')
-                        ->union($trees)
-                        ->union($flowers)
-                        ->get();
+                ->union($trees)
+                ->union($flowers)
+                ->get();
 
             return view('dashboard.posts.edit', compact('post', 'category_array', 'subcategory_array'));
         } else {
             return redirect('/dashboard/posts')
-            ->with('error', 'You do not have necessary permissions');
-        }    
+                ->with('error', 'You do not have necessary permissions');
+        }
     }
 
     /**
@@ -147,7 +151,7 @@ class PostController extends Controller
      */
     public function update(ValidatePostFormRequest $request, Post $post)
     {
-        if (Auth::user()->id == $post->user_id) {
+        if (Auth::user()->can('update', $post)) {
             if ($post) {
                 $post->title         =  $request->title;
                 $post->description   =  $request->description;
@@ -183,7 +187,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        if (Auth::user()->id == $post->user_id || Auth::user()->hasRole('admin')) {
+        if (Auth::user()->can('delete', $post) || Auth::user()->hasRole('admin')) {
             if ($post) {
                 $post->delete();
 
@@ -203,9 +207,8 @@ class PostController extends Controller
     public function updateVisability(Request $request, Post $post)
     {
         $post     = Post::where('id', $request->id)->first();
-        $user     = User::where('id', $post->user_id)->first();
 
-        if (Auth::user()->id == $user->id || Auth::user()->hasRole('admin')) {
+        if (Auth::user()->can('update', $post) || Auth::user()->hasRole('admin')) {
             if ($request->mode == 'true') {
                 DB::table('posts')->where('id', $request->id)
                     ->update([
@@ -225,5 +228,31 @@ class PostController extends Controller
             return redirect('/dashboard/posts')
             ->with('error', 'You do not have necessary permissions');
         }  
+    }
+
+    public function updateCategory(ValidateCategoryUpdateRequest $request, $id)
+    {
+        $post = Post::find($id);
+
+        if (Auth::user()->can('update', $post)) {
+            $model = $request->postable_type::find($request->postable_id);
+
+            if ($model->user_id == Auth::user()->id) {
+                if ($model) {
+                    $post->postable()->associate($model);
+                    $post->save();
+
+                    return redirect('/dashboard/posts')
+                        ->with('success', 'Post updated successfully');
+
+                } else {
+                    return redirect('/dashboard/posts')
+                        ->with('error', 'There is no such subcategory in this category');
+                }
+            }
+        } else {
+            return redirect('/dashboard/posts')
+            ->with('error', 'You do not have necessary permissions');
+        }
     }
 }

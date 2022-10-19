@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->string('postable_type');
-            $table->integer('postable_id')->nullable();
+        Schema::table('grasses', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -26,9 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropColumn('postable_id');
-            $table->dropColumn('postable_type');
+        Schema::table('grasses', function (Blueprint $table) {
+            $table->dropColumn('user_id');
         });
     }
 };

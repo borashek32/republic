@@ -11,11 +11,17 @@ class Flower extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'user_id'
     ];
 
     public function posts()
     {
         return $this->morphMany(Post::class, 'postable');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }
